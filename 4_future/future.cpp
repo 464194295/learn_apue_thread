@@ -28,10 +28,10 @@ void X::foo(int x,string const& y){
     cout<<y<<endl;
 }
 
-string* bar(string const& y){
+string X::bar(string const& y){
     cout<<"bar:"<<y<<endl;
     string temp = y;
-    return &temp;
+    return temp;
 }
 
 
@@ -44,8 +44,7 @@ int main()
     do_something();*/
     X x;
     auto f1 = async(&X::foo,&x,42,"hello");//使用的是指针
-    //auto f2 = async(&X::bar,x,"haha");
-    //cout<<"f1:"<<f2.get()<<endl;
-    x.bar("haha");
+    auto f2 = async(&X::bar,x,"haha");
+    cout<<"f2:"<<f2.get()<<endl;
     return 0;
 }
