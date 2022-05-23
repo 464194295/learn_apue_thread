@@ -21,9 +21,10 @@ list<T> parrllel_quick_sort(list<T> input)
 
     T const& pivot = *result.begin();
 
-    auto divide_point = partition(input.begin(),input.end(),[&](T const& t){return t<pivot;}); //根据lambda中定义的规则进行排序
+    //返回的是一个迭代器
+    auto divide_point = partition(input.begin(),input.end(),[&](T const& t){return t<pivot;}); //根据lambda中定义的规则进行排序，
+    
 
-    cout<<"type is:"<<typeid(divide_point).name()<<endl;
 
     list<T> lower_part;
     lower_part.splice(lower_part.begin(),input,input.begin(),divide_point);
